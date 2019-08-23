@@ -19,7 +19,6 @@ import (
 	"errors"
 	"math/big"
 
-	"github.com/ethereum/go-ethereum/accounts"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
@@ -36,16 +35,5 @@ func KeySigner(chainID *big.Int, key *ecdsa.PrivateKey) (signerfn bind.SignerFn)
 		return types.SignTx(tx, types.NewEIP155Signer(chainID), key)
 	}
 
-	return
-}
-
-// AccountSigner generates a signer using an account
-func AccountSigner(chainID *big.Int, wallet *accounts.Wallet, account *accounts.Account, passphrase string) (signerfn bind.SignerFn) {
-	signerfn = func(signer types.Signer, address common.Address, tx *types.Transaction) (*types.Transaction, error) {
-		if address != account.Address {
-			return nil, errors.New("not authorized to sign this account")
-		}
-		return (*wallet).SignTxWithPassphrase(*account, passphrase, tx, chainID)
-	}
 	return
 }

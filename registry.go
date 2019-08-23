@@ -22,7 +22,6 @@ import (
 	"reflect"
 	"time"
 
-	"github.com/ethereum/go-ethereum/accounts"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
@@ -30,7 +29,6 @@ import (
 	"github.com/ethereum/go-ethereum/params"
 	"github.com/p4u/go-ens/contracts/auctionregistrar"
 	"github.com/p4u/go-ens/contracts/registry"
-	"github.com/p4u/go-ens/util"
 )
 
 // Registry is the structure for the registry contract
@@ -205,25 +203,4 @@ func SetSubdomainOwner(session *registry.RegistryContractSession, name string, s
 		return nil, err
 	}
 	return session.SetSubnodeOwner(nameHash, labelHash, *ownerAddr)
-}
-
-// CreateRegistrySession creates a session suitable for multiple calls
-func CreateRegistrySession(chainID *big.Int, wallet *accounts.Wallet, account *accounts.Account, passphrase string, contract *registry.RegistryContract, gasPrice *big.Int) *registry.RegistryContractSession {
-	// Create a signer
-	signer := util.AccountSigner(chainID, wallet, account, passphrase)
-
-	// Return our session
-	session := &registry.RegistryContractSession{
-		Contract: contract,
-		CallOpts: bind.CallOpts{
-			Pending: true,
-		},
-		TransactOpts: bind.TransactOpts{
-			From:     account.Address,
-			Signer:   signer,
-			GasPrice: gasPrice,
-		},
-	}
-
-	return session
 }
