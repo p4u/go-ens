@@ -1,4 +1,4 @@
-module github.com/wealdtech/go-ens
+module github.com/p4u/go-ens
 
 go 1.12
 
