@@ -19,7 +19,7 @@ import (
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/wealdtech/go-ens/contracts/dnsregistrar"
+	"github.com/p4u/go-ens/contracts/dnsregistrar"
 )
 
 // DNSRegistrar is the structure for the registrar

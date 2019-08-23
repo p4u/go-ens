@@ -23,7 +23,7 @@ import (
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/wealdtech/go-ens/contracts/baseregistrar"
+	"github.com/p4u/go-ens/contracts/baseregistrar"
 	"golang.org/x/crypto/sha3"
 )
 

@@ -20,7 +20,7 @@ import (
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/wealdtech/go-ens/contracts/reverseresolver"
+	"github.com/p4u/go-ens/contracts/reverseresolver"
 )
 
 // ReverseResolver is the structure for the reverse resolver contract
