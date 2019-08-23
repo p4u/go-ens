@@ -15,17 +15,13 @@
 package ens
 
 import (
-	"context"
 	"errors"
 	"fmt"
 	"math/big"
-	"reflect"
-	"time"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/ethereum/go-ethereum/params"
 	"github.com/p4u/go-ens/contracts/auctionregistrar"
 	"github.com/p4u/go-ens/contracts/registry"
@@ -121,16 +117,6 @@ func (r *Registry) SetSubdomainOwner(opts *bind.TransactOpts, name string, subna
 // RegistryContractAddress obtains the address of the registry contract for a chain
 func RegistryContractAddress(backend bind.ContractBackend) (common.Address, error) {
 	chainID := big.NewInt(0)
-	if reflect.TypeOf(backend).String() == "*ethclient.Client" {
-		ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-		defer cancel()
-		var err error
-		chainID, err = backend.(*ethclient.Client).NetworkID(ctx)
-		if err != nil {
-			return UnknownAddress, err
-		}
-	}
-
 	// Instantiate the registry contract
 	if chainID.Cmp(params.MainnetChainConfig.ChainID) == 0 {
 		return common.HexToAddress("314159265dd8dbb310642f98f50c066173c1259b"), nil
