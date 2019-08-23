@@ -1,4 +1,4 @@
-module github.com/wealdtech/go-ens/v3
+module github.com/wealdtech/go-ens
 
 go 1.12
 

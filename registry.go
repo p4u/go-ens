@@ -28,9 +28,9 @@ import (
 	"github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/ethereum/go-ethereum/params"
-	"github.com/wealdtech/go-ens/v3/contracts/auctionregistrar"
-	"github.com/wealdtech/go-ens/v3/contracts/registry"
-	"github.com/wealdtech/go-ens/v3/util"
+	"github.com/wealdtech/go-ens/contracts/auctionregistrar"
+	"github.com/wealdtech/go-ens/contracts/registry"
+	"github.com/wealdtech/go-ens/util"
 )
 
 // Registry is the structure for the registry contract
